@@ -11,13 +11,18 @@ std::string replace_occ(const std::string &line, const std::string &s1, const st
 	if (s1.empty())
 		return result;
 	while ((pos = line.find(s1, start)) != std::string::npos){
+		if (pos > line.size())
+			break;
 		result += line.substr(start, pos - start);
 		result += s2;
 		start += pos + s1.length();
 	}
-	result += line.substr(start);
+	if (start <= line.size())
+		result += line.substr(start);
 	return result;
 }
+
+
 int main (int argc, char **argv)
 {
 
@@ -46,7 +51,6 @@ int main (int argc, char **argv)
 		output<<replace_occ(result, argv[2], argv[3]);
 		if (!input.eof())
 			output<<std::endl;
-
 	}
 	input.close();
 	output.close();
