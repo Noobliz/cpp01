@@ -22,6 +22,23 @@ std::string replace_occ(const std::string &line, const std::string &s1, const st
 	return result;
 }
 
+std::string replace_occi(const std::string &line, const std::string &s1, const std::string &s2){
+	//size_t start = 0;
+	size_t pos;
+	std::string result;
+	if (s1.empty())
+		return result;
+	pos = line.find(s1);
+	while (pos != std::string::npos){
+
+		result.erase(pos, s1.length());
+		result.insert(pos, s2);
+		pos = line.find(s1, pos + s2.length());
+		//erase, insert
+	}
+	//result += line.substr(start);
+	return result;
+}
 
 int main (int argc, char **argv)
 {
