@@ -38,12 +38,3 @@ void Harl::complain(std::string level)
     }
     std::cerr<<"level not found"<<std::endl;
 }
-
-int main(int argc, char **argv){
-    if (argc != 2)
-    {
-        std::cerr<<"input one level of complain"<<std::endl;
-    }
-    Harl harl;
-    harl.complain(argv[1]);
-}
