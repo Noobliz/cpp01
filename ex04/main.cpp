@@ -1,45 +1,8 @@
 
-#include <iostream>
-#include <fstream>
-#include <string>
-
-
-std::string replace_occ(const std::string &line, const std::string &s1, const std::string &s2){
-	size_t start = 0;
-	size_t pos;
-	std::string result;
-	if (s1.empty())
-		return result;
-	while ((pos = line.find(s1, start)) != std::string::npos){
-		if (pos > line.size())
-			break;
-		result += line.substr(start, pos - start);
-		result += s2;
-		start += pos + s1.length();
-	}
-	if (start <= line.size())
-		result += line.substr(start);
-	return result;
-}
-
-std::string replace_occi(const std::string &line, const std::string &s1, const std::string &s2){
-	//size_t start = 0;
-	size_t pos;
-	std::string result;
-	if (s1.empty())
-		return result;
-	pos = line.find(s1);
-	while (pos != std::string::npos){
-
-		result.erase(pos, s1.length());
-		result.insert(pos, s2);
-		pos = line.find(s1, pos + s2.length());
-		//erase, insert
-	}
-	//result += line.substr(start);
-	return result;
-}
-
+#include "replaceOcc.hpp"
+// ifstream = input file stream to read from a file
+// ofstream = output file "" to write and create file
+// c_str to convert string to str because of c++98
 int main (int argc, char **argv)
 {
 
@@ -65,7 +28,7 @@ int main (int argc, char **argv)
 
 	std::string result;
 	while (std::getline(input, result)){
-		output<<replace_occ(result, argv[2], argv[3]);
+		output<<replaceOcc(result, argv[2], argv[3]);
 		if (!input.eof())
 			output<<std::endl;
 	}
