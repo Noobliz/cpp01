@@ -14,7 +14,6 @@ std::string replaceOcc(const std::string &line, const std::string &s1, const std
 		result += line.substr(start, pos - start);
 		result += s2;
 		start = pos + s1.length();
-		std::cout<<"s1.length: "<<s1.length()<<std::endl;
 	}
 	if (start <= line.size())
 		result += line.substr(start);

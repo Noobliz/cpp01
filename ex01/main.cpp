@@ -18,7 +18,10 @@ int main(){
     Zombie *zomb = zombieHorde(N, "bob");
     
     for (int i = 0; i < N; i++)
+    {
+        std::cout<<"zombi["<<i<<"] ";
         zomb[i].announce();
+    }
     delete []zomb;
         
 }
